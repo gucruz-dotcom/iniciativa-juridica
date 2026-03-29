@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciativa Justiça para Todos</title>
+  <meta name="description" content="Iniciativa social formada por advogados voluntários para disseminar informações jurídicas básicas e acessíveis à população em situação de vulnerabilidade." />
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --primary: #1f4f8f;
+      --primary-dark: #14365f;
+      --accent: #d9e8ff;
+      --text: #1f2937;
+      --muted: #5b6472;
+      --border: #dbe3ee;
+      --shadow: 0 10px 30px rgba(20, 54, 95, 0.08);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      padding: 22px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.96rem;
+    }
+
+    .menu a {
+      opacity: 0.95;
+    }
+
+    .menu a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .hero {
+      padding: 72px 0 46px;
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--primary-dark);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 18px;
+      color: var(--primary-dark);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+      max-width: 700px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      border-color: var(--border);
+      color: var(--primary-dark);
+    }
+
+    .btn-secondary:hover {
+      background: #f4f7fb;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .hero-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .hero-card li + li {
+      margin-top: 8px;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      max-width: 900px;
+      margin-bottom: 24px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .areas {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .area-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      border-radius: 22px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .highlight h2 {
+      margin-bottom: 12px;
+      font-size: 1.8rem;
+    }
+
+    .highlight p {
+      max-width: 900px;
+      opacity: 0.95;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h3 {
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .contact-box p, .contact-box li {
+      color: var(--muted);
+    }
+
+    .contact-box ul {
+      padding-left: 18px;
+    }
+
+    footer {
+      margin-top: 20px;
+      padding: 28px 0 40px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .contact-grid,
+      .cards,
+      .areas {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 52px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="brand">Iniciativa Justiça para Todos</a>
+      <nav class="menu">
+        <a href="#quem-somos">Quem Somos</a>
+        <a href="#areas">Áreas de Orientação</a>
+        <a href="#objetivo">Objetivo Social</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="tag">Educação jurídica popular</span>
+          <h1>Democratizando o acesso à informação jurídica.</h1>
+          <p>
+            A Iniciativa Justiça para Todos é formada por advogados voluntários comprometidos com a disseminação de informações jurídicas básicas, claras e acessíveis para pessoas em situação de vulnerabilidade social.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#quem-somos">Conheça a iniciativa</a>
+            <a class="btn btn-secondary" href="#contato">Entrar em contato</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3>Nosso compromisso</h3>
+          <ul>
+            <li>Difundir informações jurídicas em linguagem simples.</li>
+            <li>Fortalecer a cidadania por meio do conhecimento de direitos.</li>
+            <li>Ampliar o acesso da população a conteúdos de utilidade pública.</li>
+            <li>Promover orientação inicial de caráter educativo.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="quem-somos">
+      <div class="container">
+        <h2 class="section-title">Quem Somos</h2>
+        <p class="section-text">
+          Somos uma iniciativa social formada por advogados voluntários que atuam de maneira colaborativa para tornar o conhecimento jurídico mais acessível. Nosso propósito é contribuir para que a população conheça direitos básicos, compreenda situações do cotidiano e identifique caminhos iniciais para buscar orientação adequada.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Missão</h3>
+            <p>
+              Disseminar informações jurídicas básicas e acessíveis, contribuindo para o fortalecimento da cidadania, da autonomia informacional e do acesso à justiça em sentido amplo.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Visão</h3>
+            <p>
+              Ser uma referência comunitária em educação jurídica popular, aproximando o conhecimento do direito da realidade concreta das pessoas que mais necessitam de informação qualificada.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="areas">
+      <div class="container">
+        <h2 class="section-title">Áreas de Orientação</h2>
+        <p class="section-text">
+          Os conteúdos divulgados pela iniciativa têm caráter educativo e informativo, voltados à compreensão de direitos e deveres em situações comuns da vida cotidiana.
+        </p>
+
+        <div class="areas">
+          <div class="area-item">Direito do Consumidor</div>
+          <div class="area-item">Direitos Trabalhistas</div>
+          <div class="area-item">Benefícios e Serviços Públicos</div>
+          <div class="area-item">Noções de Acesso à Justiça</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="objetivo">
+      <div class="container">
+        <div class="highlight">
+          <h2>Nosso Objetivo Social</h2>
+          <p>
+            O objetivo da iniciativa é reduzir barreiras informacionais que dificultam o exercício da cidadania, oferecendo conteúdos em linguagem clara e acessível para pessoas que, muitas vezes, não dispõem de meios adequados para compreender seus próprios direitos. Ao facilitar o acesso à informação jurídica básica, busca-se promover inclusão, autonomia e conscientização social.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <h2 class="section-title">Contato</h2>
+        <p class="section-text">
+          Para conhecer melhor a iniciativa, sugerir temas de interesse coletivo ou entrar em contato institucionalmente, utilize os canais abaixo.
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h3>Informações institucionais</h3>
+            <p><strong>E-mail:</strong> contato@justicaparatodos.org</p>
+            <p><strong>Atendimento:</strong> segunda a sexta-feira, das 9h às 17h</p>
+            <p><strong>Local de atuação:</strong> comunidade e ações educativas de interesse social</p>
+          </div>
+
+          <div class="contact-box">
+            <h3>Aviso importante</h3>
+            <ul>
+              <li>O conteúdo disponibilizado possui finalidade educativa e informativa.</li>
+              <li>As informações publicadas não substituem orientação profissional individualizada.</li>
+              <li>Em casos urgentes ou específicos, recomenda-se buscar atendimento jurídico adequado.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Iniciativa Justiça para Todos. Projeto de difusão de informação jurídica em linguagem acessível.</p>
+    </div>
+  </footer>
+</body>
+</html>
