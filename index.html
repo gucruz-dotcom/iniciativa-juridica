@@ -7,17 +7,19 @@
   <meta name="description" content="Iniciativa social formada por advogados voluntários para disseminar informações jurídicas básicas e acessíveis à população em situação de vulnerabilidade." />
   <style>
     :root {
-      --bg: #f7f9fc;
-      --card: #ffffff;
-      --primary: #1f4f8f;
-      --primary-dark: #14365f;
-      --accent: #d9e8ff;
-      --text: #1f2937;
-      --muted: #5b6472;
-      --border: #dbe3ee;
-      --shadow: 0 10px 30px rgba(20, 54, 95, 0.08);
-      --radius: 18px;
-      --max: 1100px;
+      --bg: #0b1020;
+      --bg-soft: #121a33;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-strong: rgba(255, 255, 255, 0.12);
+      --primary: #7c3aed;
+      --primary-2: #06b6d4;
+      --accent: #f59e0b;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --border: rgba(255, 255, 255, 0.14);
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+      --radius: 24px;
+      --max: 1120px;
     }
 
     * {
@@ -32,7 +34,10 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(124, 58, 237, 0.28), transparent 32%),
+        radial-gradient(circle at top right, rgba(6, 182, 212, 0.22), transparent 30%),
+        linear-gradient(180deg, #0b1020 0%, #111934 100%);
       color: var(--text);
       line-height: 1.6;
     }
@@ -48,13 +53,12 @@
     }
 
     header {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #fff;
-      padding: 22px 0;
       position: sticky;
       top: 0;
-      z-index: 10;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(11, 16, 32, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .nav {
@@ -63,12 +67,14 @@
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
+      padding: 18px 0;
     }
 
     .brand {
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: 1.18rem;
+      font-weight: 800;
       letter-spacing: 0.2px;
+      color: #ffffff;
     }
 
     .menu {
@@ -79,49 +85,50 @@
     }
 
     .menu a {
-      opacity: 0.95;
+      color: var(--muted);
+      transition: 0.2s ease;
     }
 
     .menu a:hover {
-      opacity: 1;
-      text-decoration: underline;
+      color: #fff;
     }
 
     .hero {
-      padding: 72px 0 46px;
-      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+      padding: 86px 0 48px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 28px;
       align-items: center;
     }
 
     .tag {
       display: inline-block;
-      background: var(--accent);
-      color: var(--primary-dark);
-      padding: 8px 14px;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.22), rgba(6, 182, 212, 0.22));
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 9px 16px;
       border-radius: 999px;
       font-size: 0.9rem;
       font-weight: 700;
       margin-bottom: 18px;
+      box-shadow: var(--shadow);
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.15;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.08;
       margin-bottom: 18px;
-      color: var(--primary-dark);
+      color: #ffffff;
     }
 
     .hero p {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       color: var(--muted);
       margin-bottom: 24px;
-      max-width: 700px;
+      max-width: 720px;
     }
 
     .hero-actions {
@@ -133,62 +140,69 @@
     .btn {
       display: inline-block;
       padding: 14px 22px;
-      border-radius: 12px;
-      font-weight: 700;
+      border-radius: 14px;
+      font-weight: 800;
       transition: 0.2s ease;
       border: 1px solid transparent;
+      box-shadow: var(--shadow);
     }
 
     .btn-primary {
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color: #fff;
     }
 
     .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
+      transform: translateY(-2px) scale(1.01);
     }
 
     .btn-secondary {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.08);
       border-color: var(--border);
-      color: var(--primary-dark);
+      color: #fff;
     }
 
     .btn-secondary:hover {
-      background: #f4f7fb;
+      background: rgba(255, 255, 255, 0.14);
     }
 
-    .hero-card {
+    .hero-card,
+    .card,
+    .contact-box {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 26px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
     }
 
-    .hero-card h3 {
-      color: var(--primary-dark);
+    .hero-card h3,
+    .card h3,
+    .contact-box h3 {
+      color: #fff;
       margin-bottom: 10px;
-      font-size: 1.1rem;
+      font-size: 1.14rem;
     }
 
-    .hero-card ul {
+    .hero-card ul,
+    .contact-box ul {
       padding-left: 18px;
       color: var(--muted);
     }
 
-    .hero-card li + li {
+    .hero-card li + li,
+    .contact-box li + li {
       margin-top: 8px;
     }
 
     section {
-      padding: 34px 0;
+      padding: 36px 0;
     }
 
     .section-title {
-      font-size: 1.8rem;
-      color: var(--primary-dark);
+      font-size: 1.95rem;
+      color: #fff;
       margin-bottom: 12px;
     }
 
@@ -204,21 +218,8 @@
       gap: 20px;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      color: var(--primary-dark);
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-
-    .card p {
+    .card p,
+    .contact-box p {
       color: var(--muted);
     }
 
@@ -229,32 +230,50 @@
     }
 
     .area-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(6, 182, 212, 0.14));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 22px 18px;
       text-align: center;
       box-shadow: var(--shadow);
-      font-weight: 700;
-      color: var(--primary-dark);
+      font-weight: 800;
+      color: #fff;
+      backdrop-filter: blur(12px);
     }
 
     .highlight {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.92), rgba(6, 182, 212, 0.88));
       color: #fff;
-      border-radius: 22px;
-      padding: 34px;
+      border-radius: 28px;
+      padding: 36px;
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      right: -60px;
+      top: -60px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
     }
 
     .highlight h2 {
       margin-bottom: 12px;
-      font-size: 1.8rem;
+      font-size: 1.9rem;
+      position: relative;
+      z-index: 1;
     }
 
     .highlight p {
       max-width: 900px;
-      opacity: 0.95;
+      opacity: 0.98;
+      position: relative;
+      z-index: 1;
     }
 
     .contact-grid {
@@ -263,25 +282,19 @@
       gap: 20px;
     }
 
-    .contact-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
+    .profile-link {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), #fb7185);
+      color: #111827;
+      font-weight: 800;
       box-shadow: var(--shadow);
     }
 
-    .contact-box h3 {
-      color: var(--primary-dark);
-      margin-bottom: 10px;
-    }
-
-    .contact-box p, .contact-box li {
-      color: var(--muted);
-    }
-
-    .contact-box ul {
-      padding-left: 18px;
+    .profile-link:hover {
+      transform: translateY(-1px);
     }
 
     footer {
@@ -301,7 +314,7 @@
       }
 
       .hero {
-        padding-top: 52px;
+        padding-top: 58px;
       }
     }
   </style>
@@ -314,6 +327,7 @@
         <a href="#quem-somos">Quem Somos</a>
         <a href="#areas">Áreas de Orientação</a>
         <a href="#objetivo">Objetivo Social</a>
+        <a href="#coordenacao">Coordenação</a>
         <a href="#contato">Contato</a>
       </nav>
     </div>
@@ -393,6 +407,26 @@
           <p>
             O objetivo da iniciativa é reduzir barreiras informacionais que dificultam o exercício da cidadania, oferecendo conteúdos em linguagem clara e acessível para pessoas que, muitas vezes, não dispõem de meios adequados para compreender seus próprios direitos. Ao facilitar o acesso à informação jurídica básica, busca-se promover inclusão, autonomia e conscientização social.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="coordenacao">
+      <div class="container">
+        <h2 class="section-title">Coordenação</h2>
+        <p class="section-text">
+          A Iniciativa Justiça para Todos conta com coordenação jurídica e institucional, garantindo alinhamento estratégico, responsabilidade social e qualidade das informações disponibilizadas à população.
+        </p>
+
+        <div class="card">
+          <h3>Coordenação Geral</h3>
+          <p>
+            A iniciativa é coordenada pelo advogado <strong>Bruce Flavio de Jesus Gomes</strong>, com atuação na área jurídica e experiência em projetos institucionais voltados à promoção do acesso à informação e fortalecimento da cidadania.
+          </p>
+          <p>
+            Sua atuação contribui para assegurar a consistência técnica dos conteúdos divulgados, bem como a orientação estratégica das atividades desenvolvidas no âmbito da iniciativa.
+          </p>
+          <a class="profile-link" href="https://www.linkedin.com/in/bruce-fl%C3%A1vio-de-jesus-gomes-63809a75/" target="_blank">Acessar perfil no LinkedIn</a>
         </div>
       </div>
     </section>
