@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Iniciativa Justiça para Todos</title>
-  <meta name="description" content="Iniciativa social formada por advogados voluntários para disseminar informações jurídicas básicas e acessíveis à população em situação de vulnerabilidade." />
+  <meta
+    name="description"
+    content="Iniciativa social formada por advogados voluntários para disseminar informações jurídicas básicas e acessíveis à população em situação de vulnerabilidade."
+  />
   <style>
     :root {
       --bg: #0b1020;
@@ -14,6 +17,7 @@
       --primary: #7c3aed;
       --primary-2: #06b6d4;
       --accent: #f59e0b;
+      --accent-2: #fb7185;
       --text: #f8fafc;
       --muted: #cbd5e1;
       --border: rgba(255, 255, 255, 0.14);
@@ -168,7 +172,8 @@
 
     .hero-card,
     .card,
-    .contact-box {
+    .contact-box,
+    .form-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -179,7 +184,8 @@
 
     .hero-card h3,
     .card h3,
-    .contact-box h3 {
+    .contact-box h3,
+    .form-card h3 {
       color: #fff;
       margin-bottom: 10px;
       font-size: 1.14rem;
@@ -219,13 +225,14 @@
     }
 
     .card p,
-    .contact-box p {
+    .contact-box p,
+    .form-card p {
       color: var(--muted);
     }
 
     .areas {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
 
@@ -234,11 +241,23 @@
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 18px;
       padding: 22px 18px;
-      text-align: center;
       box-shadow: var(--shadow);
-      font-weight: 800;
       color: #fff;
       backdrop-filter: blur(12px);
+    }
+
+    .area-item strong {
+      display: block;
+      font-size: 1.02rem;
+      margin-bottom: 10px;
+    }
+
+    .area-item span {
+      display: block;
+      margin-top: 6px;
+      font-weight: 400;
+      font-size: 0.92rem;
+      color: #e2e8f0;
     }
 
     .highlight {
@@ -287,7 +306,7 @@
       margin-top: 12px;
       padding: 12px 18px;
       border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), #fb7185);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
       color: #111827;
       font-weight: 800;
       box-shadow: var(--shadow);
@@ -295,6 +314,94 @@
 
     .profile-link:hover {
       transform: translateY(-1px);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .form-note {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-form label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      outline: none;
+      font-family: inherit;
+      font-size: 0.96rem;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #cbd5e1;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(6, 182, 212, 0.8);
+      box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.12);
+    }
+
+    .contact-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      width: 100%;
+      padding: 15px 18px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #111827;
+      font-size: 1rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .privacy-note {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .sr-only {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
     }
 
     footer {
@@ -307,9 +414,10 @@
 
     @media (max-width: 900px) {
       .hero-grid,
-      .contact-grid,
       .cards,
-      .areas {
+      .areas,
+      .contact-grid,
+      .contact-layout {
         grid-template-columns: 1fr;
       }
 
@@ -392,10 +500,25 @@
         </p>
 
         <div class="areas">
-          <div class="area-item">Direito do Consumidor<br><span style="display:block; margin-top:10px; font-weight:400; font-size:0.92rem; color:#e2e8f0;">Compras realizadas pela internet, telefone ou catálogo podem, em regra, ser canceladas em até 7 dias do recebimento do produto ou da assinatura do contrato.</span></div>
-          <div class="area-item">Direito de Família<br><span style="display:block; margin-top:10px; font-weight:400; font-size:0.92rem; color:#e2e8f0;">Questões envolvendo guarda, alimentos e convivência familiar exigem atenção aos direitos da criança e ao melhor interesse familiar.</span></div>
-          <div class="area-item">Sucessões<br><span style="display:block; margin-top:10px; font-weight:400; font-size:0.92rem; color:#e2e8f0;">Inventário e partilha são procedimentos importantes para regularizar bens e direitos deixados por pessoa falecida.</span></div>
-          <div class="area-item">Benefícios e Serviços Públicos<br><span style="display:block; margin-top:10px; font-weight:400; font-size:0.92rem; color:#e2e8f0;">Informação correta pode facilitar o acesso a benefícios sociais, documentos e serviços públicos essenciais.</span></div>
+          <div class="area-item">
+            <strong>Direito do Consumidor</strong>
+            <span>Compras realizadas pela internet, telefone ou catálogo podem, em regra, ser canceladas em até 7 dias do recebimento do produto ou da assinatura do contrato.</span>
+          </div>
+
+          <div class="area-item">
+            <strong>Direito de Família</strong>
+            <span>Questões envolvendo guarda, alimentos e convivência familiar exigem atenção aos direitos da criança e ao melhor interesse familiar.</span>
+          </div>
+
+          <div class="area-item">
+            <strong>Sucessões</strong>
+            <span>Inventário e partilha são procedimentos importantes para regularizar bens e direitos deixados por pessoa falecida.</span>
+          </div>
+
+          <div class="area-item">
+            <strong>Benefícios e Serviços Públicos</strong>
+            <span>Informação correta pode facilitar o acesso a benefícios sociais, documentos e serviços públicos essenciais.</span>
+          </div>
         </div>
       </div>
     </section>
@@ -405,7 +528,7 @@
         <div class="highlight">
           <h2>Nosso Objetivo Social</h2>
           <p>
-            O objetivo da iniciativa é reduzir barreiras informacionais que dificultam o exercício da cidadania, oferecendo conteúdos em linguagem clara e acessível para pessoas que, muitas vezes, não dispõem de meios adequados para compreender seus próprios direitos. Ao facilitar o acesso à informação jurídica básica, busca-se promover inclusão, autonomia e conscientização social.
+            O objetivo da iniciativa é reduzir barreiras informacionais que dificultam o exercício da cidadania, oferecendo conteúdos em linguagem clara e acessível para pessoas que, muitas vezes, não dispõem de meios adequados para compreender seus próprios direitos. Além de disponibilizar informações diretamente no site, o programa busca responder, de forma objetiva e responsável, dúvidas apresentadas pela comunidade carente, contribuindo para uma orientação inicial mais clara, mais humana e mais útil à realidade de quem precisa.
           </p>
         </div>
       </div>
@@ -429,7 +552,7 @@
           <p>
             Sua atuação contribui para assegurar a consistência técnica dos conteúdos divulgados, bem como a orientação estratégica das atividades desenvolvidas no âmbito da iniciativa.
           </p>
-          <a class="profile-link" href="https://www.linkedin.com/in/bruce-fl%C3%A1vio-de-jesus-gomes-63809a75/" target="_blank">Acessar perfil no LinkedIn</a>
+          <a class="profile-link" href="https://www.linkedin.com/in/bruce-fl%C3%A1vio-de-jesus-gomes-63809a75/" target="_blank" rel="noopener noreferrer">Acessar perfil no LinkedIn</a>
         </div>
       </div>
     </section>
@@ -438,24 +561,72 @@
       <div class="container">
         <h2 class="section-title">Contato</h2>
         <p class="section-text">
-          Para conhecer melhor a iniciativa, sugerir temas de interesse coletivo ou entrar em contato institucionalmente, utilize os canais abaixo.
+          Para conhecer melhor a iniciativa, sugerir temas de interesse coletivo ou encaminhar dúvidas objetivas para orientação inicial, utilize os canais abaixo.
         </p>
 
-        <div class="contact-grid">
-          <div class="contact-box">
-            <h3>Informações institucionais</h3>
-            <p><strong>E-mail:</strong> contato@justicaparatodos.org</p>
-            <p><strong>Atendimento:</strong> segunda a sexta-feira, das 9h às 17h</p>
-            <p><strong>Local de atuação:</strong> comunidade e ações educativas de interesse social</p>
+        <div class="contact-layout">
+          <div class="contact-grid">
+            <div class="contact-box">
+              <h3>Informações institucionais</h3>
+              <p><strong>E-mail de apoio:</strong> gucruz@gmail.com</p>
+              <p><strong>Atendimento:</strong> segunda a sexta-feira, das 9h às 17h</p>
+              <p><strong>Local de atuação:</strong> comunidade e ações educativas de interesse social</p>
+            </div>
+
+            <div class="contact-box">
+              <h3>Aviso importante</h3>
+              <ul>
+                <li>O conteúdo disponibilizado possui finalidade educativa e informativa.</li>
+                <li>As respostas encaminhadas têm caráter orientativo inicial.</li>
+                <li>As informações publicadas não substituem orientação profissional individualizada.</li>
+                <li>Em casos urgentes ou específicos, recomenda-se buscar atendimento jurídico adequado.</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="contact-box">
-            <h3>Aviso importante</h3>
-            <ul>
-              <li>O conteúdo disponibilizado possui finalidade educativa e informativa.</li>
-              <li>As informações publicadas não substituem orientação profissional individualizada.</li>
-              <li>Em casos urgentes ou específicos, recomenda-se buscar atendimento jurídico adequado.</li>
-            </ul>
+          <div class="form-card">
+            <h3>Envie sua dúvida</h3>
+            <p class="form-note">
+              Você pode encaminhar uma dúvida objetiva para orientação inicial. A iniciativa busca responder com clareza, linguagem acessível e foco na utilidade social da informação.
+            </p>
+
+            <form
+              class="contact-form"
+              action="https://formsubmit.co/gucruz@gmail.com"
+              method="POST"
+            >
+              <input type="hidden" name="_subject" value="Nova mensagem - Iniciativa Justiça para Todos" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="https://SEUUSUARIO.github.io/SEUREPOSITORIO/" />
+              <input type="text" name="_honey" class="sr-only" tabindex="-1" autocomplete="off" />
+
+              <div>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+              </div>
+
+              <div>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
+              </div>
+
+              <div>
+                <label for="assunto">Assunto</label>
+                <input type="text" id="assunto" name="assunto" placeholder="Ex.: dúvida sobre compra pela internet" required />
+              </div>
+
+              <div>
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" placeholder="Descreva sua dúvida de forma objetiva." required></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">Enviar mensagem</button>
+
+              <p class="privacy-note">
+                Após publicar o site, faça um primeiro teste e confirme o e-mail de ativação enviado pelo serviço de formulário.
+              </p>
+            </form>
           </div>
         </div>
       </div>
